@@ -1,0 +1,190 @@
+package com.ereader.main;
+
+import java.awt.BorderLayout;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
+import com.ereader.model.ModelPanel;
+import com.ereader.model.SoundModel;
+import com.ereader.readinglevel.ReadingPanels;
+import com.ereader.utils.Constants;
+
+public class Main {
+
+	private ReadingPanels readindPanels;
+
+	private ModelPanel modelPanel;
+
+	private StatePanel statePanel;
+	
+	private List<SoundModel> models = new ArrayList<SoundModel>();
+
+	public static void main(String... args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new Main().displayGUI();
+			}
+		});
+	}
+
+	public static BufferedImage resize(BufferedImage image, int width, int height) {
+	    BufferedImage bi = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
+	    Graphics2D g2d = (Graphics2D) bi.createGraphics();
+	    g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
+	    g2d.drawImage(image, 0, 0, width, height, null);
+	    g2d.dispose();
+	    return bi;
+	}
+	
+	private ImageIcon createIcon(int numb)
+	{
+		BufferedImage bufferedImage = new LoadImage(numb).getImg();
+		BufferedImage resizedBufferedImage=resize(bufferedImage,200,200);
+		ImageIcon icon = new ImageIcon(resizedBufferedImage);
+		return icon;
+	}
+	
+	private void createList() {
+		SoundModel angelModel = new SoundModel("ангел", createIcon(Constants.ANGEL));
+		SoundModel armModel = new SoundModel("ръка", createIcon(Constants.ARM));
+		SoundModel bananaModel = new SoundModel("банан", createIcon(Constants.BANANA));
+		SoundModel bedModel = new SoundModel("легло", createIcon(Constants.BED));
+		SoundModel blouseModel = new SoundModel("блуза", createIcon(Constants.BLOUSE));
+		SoundModel bookModel = new SoundModel("книга", createIcon(Constants.BOOK));
+		SoundModel catModel = new SoundModel("котка", createIcon(Constants.CAT));
+		SoundModel chairModel = new SoundModel("стол", createIcon(Constants.CHAIR));
+		SoundModel cloudModel = new SoundModel("облак", createIcon(Constants.CLOUD));
+		SoundModel cockModel = new SoundModel("петел", createIcon(Constants.COCK));
+		SoundModel cowModel = new SoundModel("крава", createIcon(Constants.COW));
+		SoundModel dogModel = new SoundModel("куче", createIcon(Constants.DOG));
+		SoundModel dollModel = new SoundModel("кукла", createIcon(Constants.DOLL));
+		SoundModel earModel = new SoundModel("ухо", createIcon(Constants.EAR));
+		SoundModel elephantModel = new SoundModel("слон", createIcon(Constants.ELEPHANT));
+		SoundModel eyeModel = new SoundModel("око", createIcon(Constants.EYE));
+		SoundModel featherModel = new SoundModel("перо", createIcon(Constants.FEATHER));
+		SoundModel fishModel = new SoundModel("риба", createIcon(Constants.FISH));
+		SoundModel flowerModel = new SoundModel("цвете", createIcon(Constants.FLOWER));
+		SoundModel frogModel = new SoundModel("жаба", createIcon(Constants.FROG));
+		SoundModel heartModel = new SoundModel("сърце", createIcon(Constants.HEART));
+		SoundModel honeyModel = new SoundModel("мед", createIcon(Constants.HONEY));
+		SoundModel horseModel = new SoundModel("кон", createIcon(Constants.HORSE));
+		SoundModel iglooModel = new SoundModel("иглу", createIcon(Constants.IGLOO));
+		SoundModel legModel = new SoundModel("крак", createIcon(Constants.LEG));
+		SoundModel lionModel = new SoundModel("лъв", createIcon(Constants.LION));
+		SoundModel moonModel = new SoundModel("луна", createIcon(Constants.MOON));
+		SoundModel noseModel = new SoundModel("нос", createIcon(Constants.NOSE));
+		SoundModel pawModel = new SoundModel("лапа", createIcon(Constants.PAW));
+		SoundModel pumpkinModel = new SoundModel("тиква", createIcon(Constants.PUMPKIN));
+		SoundModel purseModel = new SoundModel("чанта", createIcon(Constants.PURSE));
+		SoundModel rabbitModel = new SoundModel("заек", createIcon(Constants.RABBIT));
+		SoundModel scarfModel = new SoundModel("шал", createIcon(Constants.SCARF));
+		SoundModel shipModel = new SoundModel("кораб", createIcon(Constants.SHIP));
+		SoundModel sunModel = new SoundModel("слънце", createIcon(Constants.SUN));
+		SoundModel tableModel = new SoundModel("маса", createIcon(Constants.TABLE));
+		SoundModel threeModel = new SoundModel("три", createIcon(Constants.THREE));
+		SoundModel tigerModel = new SoundModel("тигър", createIcon(Constants.TIGER));
+		SoundModel toothModel = new SoundModel("зъб", createIcon(Constants.TOOTH));
+		SoundModel treeModel = new SoundModel("дърво", createIcon(Constants.TREE));
+		SoundModel walnutModel = new SoundModel("орех", createIcon(Constants.WALNUT));
+		SoundModel waterModel = new SoundModel("вода", createIcon(Constants.WATER));
+		
+		models.add(angelModel);
+		models.add(armModel);
+		models.add(bananaModel);
+		models.add(bedModel);
+		models.add(blouseModel);
+		models.add(bookModel);
+		models.add(catModel);
+		models.add(chairModel);
+		models.add(cloudModel);
+		models.add(cockModel);
+		models.add(cowModel);
+		models.add(dogModel);
+		models.add(dollModel);
+		models.add(earModel);
+		models.add(elephantModel);
+		models.add(eyeModel);
+		models.add(featherModel);
+		models.add(fishModel);
+		models.add(flowerModel);
+		models.add(frogModel);
+		models.add(heartModel);
+		models.add(honeyModel);
+		models.add(horseModel);
+		models.add(iglooModel);
+		models.add(legModel);
+		models.add(lionModel);
+		models.add(moonModel);
+		models.add(noseModel);
+		models.add(pawModel);
+		models.add(pumpkinModel);
+		models.add(purseModel);
+		models.add(rabbitModel);
+		models.add(scarfModel);
+		models.add(shipModel);
+		models.add(sunModel);
+		models.add(tableModel);
+		models.add(threeModel);
+		models.add(tigerModel);
+		models.add(toothModel);
+		models.add(treeModel);
+		models.add(walnutModel);
+		models.add(waterModel);
+	}
+
+	public void displayGUI() {
+
+		final JFrame guiFrame = new JFrame();
+		guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		guiFrame.setTitle("Четало");
+
+		// This will center the JFrame in the middle of the screen
+		guiFrame.setLocationRelativeTo(null);
+
+		ActionListener readingButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				statePanel.setVisible(false);
+				readindPanels.getChoiceContentPanel().setVisible(true);
+			}
+		};
+		ActionListener modelButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				statePanel.setVisible(false);
+				modelPanel.setVisible(true);
+
+			}
+		};
+
+		readindPanels = new ReadingPanels();
+		Random rand = new Random();
+		int index;
+		createList();
+		index = rand.nextInt(models.size() - 1) + 0;
+		
+		modelPanel = new ModelPanel(index, models);
+		statePanel = new StatePanel(readingButtonListener, modelButtonListener);
+		guiFrame.add(readindPanels.getSyllableContentPanel(), BorderLayout.WEST);
+		guiFrame.add(readindPanels.getCombinationsContentPanel(), BorderLayout.NORTH);
+		guiFrame.add(readindPanels.getChoiceContentPanel(), BorderLayout.CENTER);
+		guiFrame.add(modelPanel, BorderLayout.SOUTH);
+		guiFrame.add(statePanel, BorderLayout.EAST);
+		guiFrame.pack();
+		guiFrame.setLocationByPlatform(true);
+		guiFrame.setVisible(true);
+
+	}
+}
